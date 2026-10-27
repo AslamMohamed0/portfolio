@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Aslam P. — .NET Full Stack Developer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#0d1412;--surface:#131d1a;--line:#26352f;--text:#e7efe9;--mute:#93a69c;--accent:#7fd6c2;--signal:#f2b84b;--onacc:#06201a;
+--display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+--h1:clamp(2.6rem,7.4vw,6.6rem);--h2:clamp(1.9rem,4.2vw,3.4rem);--s:clamp(1rem,2.2vw,2rem);--pad:clamp(1.1rem,4vw,3.5rem);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root:not([data-theme="light"]){color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1412}}
+:root[data-theme="dark"]{color-scheme:dark}
+:root[data-theme="light"]{--bg:#eef3ef;--surface:#e1eae4;--line:#bccbc2;--text:#10201a;--mute:#4b6057;--accent:#0b6b57;--signal:#9a5b00;--onacc:#ffffff;color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4.5rem)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--body);transition:background .4s,color .4s;overflow-x:hidden;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;background-attachment:fixed;background-blend-mode:soft-light}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.86;z-index:-1;pointer-events:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+.wrap{max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+#prog{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:0 50%;z-index:60}
+header{position:sticky;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:4rem}
+.mark{font:800 1.15rem var(--display);text-decoration:none;letter-spacing:-.02em}
+.links{display:flex;gap:1.8rem;align-items:center}
+.links a{text-decoration:none;color:var(--mute);font-size:.95rem;transition:color .2s}
+.links a:hover{color:var(--text)}
+.ico{background:none;border:1px solid var(--line);color:var(--text);width:2.5rem;height:2.5rem;border-radius:4px;cursor:pointer;font:inherit}
+.ico:hover{border-color:var(--accent)}
+#menu{display:none}
+@media(max-width:760px){#menu{display:inline-block}.links{display:none;position:absolute;top:4rem;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem var(--pad) 1rem}.links.open{display:flex}.links a{padding:.7rem 0;font-size:1.1rem}}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:center;min-height:calc(100svh - 4rem);padding:clamp(2rem,6vw,5rem) 0}
+@media(max-width:980px){.hero{grid-template-columns:1fr;min-height:0}}
+.avail{display:inline-flex;gap:.6rem;align-items:center;border:1px solid var(--line);padding:.3rem .8rem;border-radius:4px;font:400 .85rem var(--mono);color:var(--mute)}
+.avail i{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+h1{font:800 var(--h1)/.95 var(--display);letter-spacing:-.04em;margin:1.4rem 0 1.4rem;max-width:12ch}
+h1 span{display:block;color:var(--mute)}
+.lede{max-width:46ch;color:var(--mute);font-size:1.15rem;margin:0 0 2rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.btn{display:inline-block;padding:.85rem 1.4rem;border-radius:4px;border:1px solid var(--text);text-decoration:none;font-weight:500;transition:transform .2s,background .2s,color .2s;cursor:pointer;font-family:var(--body);font-size:1rem;color:var(--text);background:none}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--onacc)}
+.btn:hover{transform:translateY(-2px)}
+.soc{display:flex;gap:1.2rem;margin-top:2rem;font:400 .9rem var(--mono)}
+.soc a{color:var(--mute);text-underline-offset:4px}.soc a:hover{color:var(--accent)}
+.scroll{margin-top:2.5rem;display:flex;gap:.8rem;align-items:center;font:400 .8rem var(--mono);color:var(--mute)}
+.scroll b{display:block;width:1px;height:2.4rem;background:var(--line);position:relative;overflow:hidden}
+.scroll b::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--accent);animation:drop 2s infinite}
+@keyframes drop{to{top:110%}}
+/* architecture */
+.arch{border:1px solid var(--line);background:var(--surface);padding:1.2rem;border-radius:2px;position:relative}
+.arch h2{font:400 .8rem var(--mono);color:var(--mute);margin:0 0 1rem}
+.stack{list-style:none;margin:0;padding:0;position:relative}
+.stack::before{content:"";position:absolute;left:1.1rem;top:1rem;bottom:1rem;width:1px;background:var(--line)}
+.stack::after{content:"";position:absolute;left:calc(1.1rem - 3px);top:0;width:7px;height:7px;border-radius:50%;background:var(--signal);animation:flow 4.8s linear infinite}
+@keyframes flow{0%{top:1rem;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:calc(100% - 1rem);opacity:0}}
+.node{display:flex;width:100%;gap:1rem;align-items:center;text-align:left;background:none;border:0;color:var(--text);padding:.55rem .4rem;cursor:pointer;font:500 1rem var(--body);position:relative;border-radius:3px}
+.node .d{width:.9rem;height:.9rem;border:1px solid var(--accent);background:var(--surface);margin-left:.65rem;flex:none;transition:background .2s;position:relative}
+.node small{margin-left:auto;font:400 .75rem var(--mono);color:var(--mute)}
+.node:hover .d,.node[aria-pressed="true"] .d{background:var(--accent)}
+.node[aria-pressed="true"]{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+#note{margin:1rem 0 0;padding-top:1rem;border-top:1px solid var(--line);min-height:6.6rem;color:var(--mute);font-size:.98rem}
+#note b{color:var(--text);font-family:var(--display);font-size:1.1rem;display:block;margin-bottom:.2rem}
+/* sections */
+section.s{padding:clamp(3.5rem,9vw,8rem) 0;border-top:1px solid var(--line)}
+h2.t{font:800 var(--h2)/1 var(--display);letter-spacing:-.03em;margin:0 0 3rem;max-width:18ch}
+.proj{display:grid;gap:clamp(1.2rem,4vw,4rem);align-items:center;padding:clamp(2rem,5vw,4rem) 0;border-top:1px solid var(--line)}
+.proj:nth-of-type(1){grid-template-columns:1.1fr 1fr}
+.proj:nth-of-type(2){grid-template-columns:1fr 1.3fr}
+.proj:nth-of-type(2) .art{order:-1}
+.proj:nth-of-type(3){grid-template-columns:1fr;max-width:980px}
+@media(max-width:860px){.proj:nth-of-type(n){grid-template-columns:1fr}.proj:nth-of-type(2) .art{order:0}}
+.proj h3{font:700 var(--s)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 .8rem}
+.proj p{color:var(--mute);margin:.4rem 0 1rem;max-width:56ch}
+.stk{font:400 .85rem var(--mono);color:var(--accent);margin:0}
+.art{border:1px solid var(--line);background:var(--surface);aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
+.art svg{width:100%;height:100%;display:block}
+.art .ln{stroke:var(--accent);fill:none;stroke-width:1.2}
+.art .bx{stroke:var(--line);fill:var(--bg);stroke-width:1.2}
+.art .hl{fill:var(--signal)}.art text{fill:var(--mute);font:11px var(--mono)}
+details{margin-top:1rem;border-top:1px solid var(--line)}
+summary{cursor:pointer;padding:.8rem 0;font-weight:500;list-style:none}
+summary::after{content:"+";float:right;font-family:var(--mono);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details ul{margin:0 0 1rem;padding-left:1.1rem;color:var(--mute)}
+.cap{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+.cap div{padding:1.4rem;border:1px solid var(--line);margin:-.5px}
+.cap h3{font:700 1.15rem var(--display);margin:0 0 .5rem}.cap p{margin:0;color:var(--mute);font-size:.98rem}
+@media(max-width:860px){.cap{grid-template-columns:1fr 1fr}}@media(max-width:520px){.cap{grid-template-columns:1fr}}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
+@media(max-width:860px){.contact{grid-template-columns:1fr}}
+form{display:grid;gap:1.1rem}
+label{display:grid;gap:.4rem;font-size:.92rem;color:var(--mute)}
+input,textarea{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:.8rem}
+input:focus,textarea:focus{border-color:var(--accent);outline:none}
+[aria-invalid="true"]{border-color:#e5646a}
+.err{color:#e5646a;font-size:.85rem;min-height:1.1em}
+#fb{min-height:1.5em;color:var(--accent)}
+footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--mute);font:400 .85rem var(--mono)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+<header><div class="wrap"><nav aria-label="Primary">
+<a class="mark" href="#top" data-bind="wordmark">Mohamed Aslam P.</a>
+<div class="links" id="links"><a href="#work">Work</a><a href="#systems">Systems</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+<button class="ico" id="theme" aria-label="Switch to light theme">◐</button></div>
+<button class="ico" id="menu" aria-expanded="false" aria-controls="links" aria-label="Open menu">☰</button>
+</nav></div></header>
+
+<main id="top" class="wrap">
+<section class="hero" aria-labelledby="h">
+<div>
+<span class="avail"><i></i><span id="avail">Available for new opportunities</span></span>
+<h1 id="h">Engineering digital experiences.<span>Building systems that scale.</span></h1>
+<p class="lede">I build reliable enterprise applications, thoughtful APIs, and scalable software using .NET, Angular, and modern cloud technologies.</p>
+<div class="cta"><a class="btn p" href="#work">Explore my work</a><a class="btn" id="resume" href="#contact">Download resume</a></div>
+<div class="soc"><a id="gh" href="https://github.com/" target="_blank" rel="noopener">GitHub</a><a id="li" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></div>
+<div class="scroll"><b></b><span>Scroll to see the work</span></div>
+</div>
+<aside class="arch" aria-label="Interactive architecture of a typical system I build">
+<h2>A request, end to end. Select a layer.</h2>
+<ul class="stack" id="stack"></ul>
+<p id="note" aria-live="polite"></p>
+</aside>
+</section>
+
+<section class="s" id="work" aria-labelledby="wt">
+<h2 class="t rv" id="wt">Three systems, built for real operations.</h2>
+
+<article class="proj rv">
+<div><h3>Enterprise CRM Platform</h3>
+<p>Lead management and quotation workflows on a microservices architecture, connected to ERP, messaging and reporting.</p>
+<p class="stk">C# · ASP.NET Core · RabbitMQ · SQL Server · Angular</p>
+<details><summary>Role and decisions</summary><ul>
+<li>Responsibilities: add your real responsibilities here.</li>
+<li>Engineering decision: add a real trade-off and why you chose it.</li>
+<li>Challenge and solution: add one concrete problem and its outcome.</li></ul></details></div>
+<div class="art"><svg viewBox="0 0 400 300" role="img" aria-label="Services connected by a message bus, with an ERP system on the right">
+<rect class="bx" x="30" y="40" width="90" height="46"/><text x="48" y="68">Leads</text>
+<rect class="bx" x="30" y="127" width="90" height="46"/><text x="44" y="155">Quotes</text>
+<rect class="bx" x="30" y="214" width="90" height="46"/><text x="38" y="242">Reports</text>
+<path class="ln" d="M120 63H175V237H120M120 150H175"/>
+<rect x="175" y="30" width="22" height="240" fill="var(--bg)" stroke="var(--accent)"/><text x="203" y="152" style="font-size:10px">RabbitMQ</text>
+<path class="ln" d="M197 150H290"/><rect class="bx" x="290" y="120" width="80" height="60"/><text x="312" y="154">ERP</text>
+<circle class="hl" r="4"><animateMotion dur="3.2s" repeatCount="indefinite" path="M120 63H175V150H290"/></circle></svg></div>
+</article>
+
+<article class="proj rv">
+<div><h3>Healthcare Management Platform</h3>
+<p>Patient records and encounters, hospital operations, and laboratory and pharmacy workflows. Anonymized visuals only.</p>
+<p class="stk">Angular · ASP.NET Core · Oracle</p>
+<details><summary>Role and decisions</summary><ul>
+<li>Responsibilities: add your real responsibilities here.</li>
+<li>Engineering decision: add a real trade-off and why you chose it.</li>
+<li>Challenge and solution: add one concrete problem and its outcome.</li></ul></details></div>
+<div class="art"><svg viewBox="0 0 400 300" role="img" aria-label="Abstract grid of clinical modules around a patient record">
+<rect class="bx" x="140" y="100" width="120" height="100"/><text x="162" y="155">Patient record</text>
+<rect class="bx" x="30" y="30" width="90" height="50"/><text x="48" y="60">Encounters</text>
+<rect class="bx" x="280" y="30" width="90" height="50"/><text x="305" y="60">Laboratory</text>
+<rect class="bx" x="30" y="220" width="90" height="50"/><text x="46" y="250">Operations</text>
+<rect class="bx" x="280" y="220" width="90" height="50"/><text x="302" y="250">Pharmacy</text>
+<path class="ln" d="M120 70L140 100M280 70L260 100M120 230L140 200M280 230L260 200"/>
+<circle class="hl" cx="200" cy="100" r="4"><animate attributeName="cy" values="100;200;100" dur="5s" repeatCount="indefinite"/></circle></svg></div>
+</article>
+
+<article class="proj rv">
+<div><h3>Healthcare Reporting System</h3>
+<p>MIS reporting with dynamic data retrieval, delivered as a desktop application with Crystal Reports.</p>
+<p class="stk">Crystal Reports · Desktop · SQL</p>
+<details><summary>Role and decisions</summary><ul>
+<li>Responsibilities: add your real responsibilities here.</li>
+<li>Engineering decision: add a real trade-off and why you chose it.</li>
+<li>Challenge and solution: add one concrete problem and its outcome.</li></ul></details></div>
+</article>
+</section>
+
+<section class="s" id="systems" aria-labelledby="st">
+<h2 class="t rv" id="st">How I structure the code behind the screen.</h2>
+<p class="lede rv">The layered view above is the shape I reach for: a thin API, use cases in the application layer, rules in the domain, and all I/O pushed to infrastructure. Each layer can be tested and replaced on its own.</p>
+</section>
+
+<section class="s" id="skills" aria-labelledby="kt">
+<h2 class="t rv" id="kt">What I work with.</h2>
+<div class="cap rv">
+<div><h3>Backend</h3><p>C#, ASP.NET Core, RESTful APIs, microservices</p></div>
+<div><h3>Frontend</h3><p>Angular, TypeScript</p></div>
+<div><h3>Data</h3><p>Oracle, SQL Server, Dapper</p></div>
+<div><h3>Messaging</h3><p>RabbitMQ, asynchronous workflows</p></div>
+<div><h3>Cloud</h3><p>Microsoft Azure, Docker, CI/CD</p></div>
+<div><h3>Architecture</h3><p>Clean Architecture, CQRS</p></div>
+</div>
+</section>
+
+<section class="s" id="contact" aria-labelledby="ct">
+<div class="contact">
+<div><h2 class="t rv" id="ct">Have an interesting problem to solve?</h2>
+<p class="lede">Tell me what you are building. I reply to every message.</p>
+<div class="soc"><a id="em" href="mailto:you@example.com">you@example.com</a><a href="#" id="li2" target="_blank" rel="noopener">LinkedIn</a><a href="#" id="gh2" target="_blank" rel="noopener">GitHub</a></div></div>
+<form id="f" novalidate>
+<label>Your name<input id="n" autocomplete="name" required><span class="err" data-for="n"></span></label>
+<label>Your email<input id="e" type="email" autocomplete="email" required><span class="err" data-for="e"></span></label>
+<label>What are you working on?<textarea id="m" rows="5" required></textarea><span class="err" data-for="m"></span></label>
+<button class="btn p" type="submit">Send message</button><div id="fb" role="status"></div>
+</form></div>
+</section>
+</main>
+<footer><div class="wrap">© <span id="yr"></span> <span data-bind="wordmark">Mohamed Aslam P.</span></div></footer>
+
+<script>
+/* EDIT HERE: all profile content and links live in CONFIG */
+const CONFIG={name:"Mohamed Aslam P.",available:true,availText:"Available for new opportunities",busyText:"Currently booked",
+email:"you@example.com",github:"https://github.com/",linkedin:"https://www.linkedin.com/",resume:"",
+layers:[
+["Angular frontend","UI","Components, routing and state. Calls the API through typed services and handles validation and loading states."],
+["ASP.NET Core API","HTTP","Thin controllers: authenticate, validate input, and hand each request to a command or query."],
+["Application layer","CQRS","Commands and queries hold the use cases. They coordinate work but contain no storage details."],
+["Domain layer","Rules","Entities and business rules, free of frameworks, so the important logic is easy to test."],
+["Infrastructure layer","I/O","Repositories (Dapper), RabbitMQ publishers and consumers, and integrations with external systems."],
+["Database","Oracle / SQL Server","Persistent storage. Queries are explicit and tuned; changes ship through versioned migrations."]]};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$$('[data-bind=wordmark]').forEach(e=>e.textContent=CONFIG.name);
+$('#avail').textContent=CONFIG.available?CONFIG.availText:CONFIG.busyText;
+$('#yr').textContent=new Date().getFullYear();
+['gh','gh2'].forEach(i=>$('#'+i).href=CONFIG.github);['li','li2'].forEach(i=>$('#'+i).href=CONFIG.linkedin);
+$('#em').href='mailto:'+CONFIG.email;$('#em').textContent=CONFIG.email;
+$('#resume').addEventListener('click',e=>{if(CONFIG.resume){$('#resume').href=CONFIG.resume;$('#resume').download='resume'}else{e.preventDefault();$('#fb').textContent='Resume is not uploaded yet. Add its path to CONFIG.resume, or send me a message.';location.hash='contact'}});
+/* architecture */
+const st=$('#stack'),note=$('#note');
+CONFIG.layers.forEach((l,i)=>{const li=document.createElement('li'),b=document.createElement('button');
+b.className='node';b.setAttribute('aria-pressed','false');b.innerHTML='<span class="d"></span>'+l[0]+'<small>'+l[1]+'</small>';
+b.onclick=()=>sel(i);li.append(b);st.append(li)});
+function sel(i){$$('.node').forEach((n,j)=>n.setAttribute('aria-pressed',i===j));const l=CONFIG.layers[i];note.innerHTML='<b></b><span></span>';note.firstChild.textContent=l[0];note.lastChild.textContent=l[2]}
+sel(1);
+/* theme, menu, progress, reveal */
+const root=document.documentElement,tb=$('#theme');
+tb.onclick=()=>{const d=root.dataset.theme==='dark';root.dataset.theme=d?'light':'dark';tb.setAttribute('aria-label',d?'Switch to dark theme':'Switch to light theme')};
+$('#menu').onclick=e=>{const o=$('#links').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',o)};
+$$('#links a').forEach(a=>a.addEventListener('click',()=>{$('#links').classList.remove('open');$('#menu').setAttribute('aria-expanded','false')}));
+const pg=$('#prog');addEventListener('scroll',()=>{const h=document.documentElement;pg.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight||1))+')'},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rv').forEach(e=>io.observe(e));
+/* form */
+const rules={n:v=>v.trim()?'':'Enter your name.',e:v=>/^\S+@\S+\.\S+$/.test(v)?'':'Enter a valid email address.',m:v=>v.trim().length>=10?'':'Write at least 10 characters.'};
+$('#f').addEventListener('submit',ev=>{ev.preventDefault();let ok=true;
+for(const k in rules){const el=$('#'+k),msg=rules[k](el.value);$('[data-for='+k+']').textContent=msg;el.setAttribute('aria-invalid',!!msg);if(msg&&ok){el.focus();ok=false}}
+if(!ok){$('#fb').textContent='';return}
+location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('Message from '+$('#n').value)+'&body='+encodeURIComponent($('#m').value+'\n\n'+$('#e').value);
+$('#fb').textContent='Your email app should open with the message ready to send.'});
+</script>
+</body>
+</html>
